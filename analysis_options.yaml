@@ -1,0 +1,11 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    - prefer_relative_imports
+    - avoid_print
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

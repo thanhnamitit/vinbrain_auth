@@ -11,12 +11,23 @@ class GetLocalLoginSessionUseCase {
 
   Future<LoginSession> call() async {
     final deviceInfoPlugin = DeviceInfoPlugin();
+    LoginSession result;
+    final now = DateTime.now();
     if (Platform.isAndroid) {
       final info = await deviceInfoPlugin.androidInfo;
-      return LoginSession(specialId: info.fingerprint ?? info.androidId ?? '');
+      result = LoginSession(
+        specialId: info.fingerprint ?? info.androidId ?? '',
+        deviceName: info.model ?? '',
+        dateTime: now,
+      );
     } else {
       final info = await deviceInfoPlugin.iosInfo;
-      return LoginSession(specialId: info.localizedModel ?? info.model ?? '');
+      result = LoginSession(
+        specialId: info.localizedModel ?? info.model ?? '',
+        deviceName: info.model ?? '',
+        dateTime: now,
+      );
     }
+    return result;
   }
 }

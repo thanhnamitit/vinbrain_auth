@@ -9,7 +9,8 @@ class LoginSession with _$LoginSession {
 
   const factory LoginSession({
     required String specialId,
-    DateTime? dateTime,
+    required String deviceName,
+    required DateTime dateTime,
   }) = _LoginSession;
 
   factory LoginSession.fromJson(Map<String, dynamic> json) =>

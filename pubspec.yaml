@@ -28,6 +28,7 @@ dependencies:
   camera: ^0.9.4+11
   cloud_firestore: ^3.1.14
   device_info_plus: ^3.2.3
+  firebase_auth: ^3.3.4
 
 dev_dependencies:
   flutter_test:

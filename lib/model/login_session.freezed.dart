@@ -21,9 +21,13 @@ LoginSession _$LoginSessionFromJson(Map<String, dynamic> json) {
 class _$LoginSessionTearOff {
   const _$LoginSessionTearOff();
 
-  _LoginSession call({required String specialId, DateTime? dateTime}) {
+  _LoginSession call(
+      {required String specialId,
+      required String deviceName,
+      required DateTime dateTime}) {
     return _LoginSession(
       specialId: specialId,
+      deviceName: deviceName,
       dateTime: dateTime,
     );
   }
@@ -39,7 +43,8 @@ const $LoginSession = _$LoginSessionTearOff();
 /// @nodoc
 mixin _$LoginSession {
   String get specialId => throw _privateConstructorUsedError;
-  DateTime? get dateTime => throw _privateConstructorUsedError;
+  String get deviceName => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +57,7 @@ abstract class $LoginSessionCopyWith<$Res> {
   factory $LoginSessionCopyWith(
           LoginSession value, $Res Function(LoginSession) then) =
       _$LoginSessionCopyWithImpl<$Res>;
-  $Res call({String specialId, DateTime? dateTime});
+  $Res call({String specialId, String deviceName, DateTime dateTime});
 }
 
 /// @nodoc
@@ -66,6 +71,7 @@ class _$LoginSessionCopyWithImpl<$Res> implements $LoginSessionCopyWith<$Res> {
   @override
   $Res call({
     Object? specialId = freezed,
+    Object? deviceName = freezed,
     Object? dateTime = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,10 +79,14 @@ class _$LoginSessionCopyWithImpl<$Res> implements $LoginSessionCopyWith<$Res> {
           ? _value.specialId
           : specialId // ignore: cast_nullable_to_non_nullable
               as String,
+      deviceName: deviceName == freezed
+          ? _value.deviceName
+          : deviceName // ignore: cast_nullable_to_non_nullable
+              as String,
       dateTime: dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -88,7 +98,7 @@ abstract class _$LoginSessionCopyWith<$Res>
           _LoginSession value, $Res Function(_LoginSession) then) =
       __$LoginSessionCopyWithImpl<$Res>;
   @override
-  $Res call({String specialId, DateTime? dateTime});
+  $Res call({String specialId, String deviceName, DateTime dateTime});
 }
 
 /// @nodoc
@@ -104,6 +114,7 @@ class __$LoginSessionCopyWithImpl<$Res> extends _$LoginSessionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? specialId = freezed,
+    Object? deviceName = freezed,
     Object? dateTime = freezed,
   }) {
     return _then(_LoginSession(
@@ -111,10 +122,14 @@ class __$LoginSessionCopyWithImpl<$Res> extends _$LoginSessionCopyWithImpl<$Res>
           ? _value.specialId
           : specialId // ignore: cast_nullable_to_non_nullable
               as String,
+      deviceName: deviceName == freezed
+          ? _value.deviceName
+          : deviceName // ignore: cast_nullable_to_non_nullable
+              as String,
       dateTime: dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -122,7 +137,11 @@ class __$LoginSessionCopyWithImpl<$Res> extends _$LoginSessionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LoginSession extends _LoginSession {
-  const _$_LoginSession({required this.specialId, this.dateTime}) : super._();
+  const _$_LoginSession(
+      {required this.specialId,
+      required this.deviceName,
+      required this.dateTime})
+      : super._();
 
   factory _$_LoginSession.fromJson(Map<String, dynamic> json) =>
       _$$_LoginSessionFromJson(json);
@@ -130,11 +149,13 @@ class _$_LoginSession extends _LoginSession {
   @override
   final String specialId;
   @override
-  final DateTime? dateTime;
+  final String deviceName;
+  @override
+  final DateTime dateTime;
 
   @override
   String toString() {
-    return 'LoginSession(specialId: $specialId, dateTime: $dateTime)';
+    return 'LoginSession(specialId: $specialId, deviceName: $deviceName, dateTime: $dateTime)';
   }
 
   @override
@@ -144,6 +165,9 @@ class _$_LoginSession extends _LoginSession {
             (identical(other.specialId, specialId) ||
                 const DeepCollectionEquality()
                     .equals(other.specialId, specialId)) &&
+            (identical(other.deviceName, deviceName) ||
+                const DeepCollectionEquality()
+                    .equals(other.deviceName, deviceName)) &&
             (identical(other.dateTime, dateTime) ||
                 const DeepCollectionEquality()
                     .equals(other.dateTime, dateTime)));
@@ -153,6 +177,7 @@ class _$_LoginSession extends _LoginSession {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(specialId) ^
+      const DeepCollectionEquality().hash(deviceName) ^
       const DeepCollectionEquality().hash(dateTime);
 
   @JsonKey(ignore: true)
@@ -167,8 +192,10 @@ class _$_LoginSession extends _LoginSession {
 }
 
 abstract class _LoginSession extends LoginSession {
-  const factory _LoginSession({required String specialId, DateTime? dateTime}) =
-      _$_LoginSession;
+  const factory _LoginSession(
+      {required String specialId,
+      required String deviceName,
+      required DateTime dateTime}) = _$_LoginSession;
   const _LoginSession._() : super._();
 
   factory _LoginSession.fromJson(Map<String, dynamic> json) =
@@ -177,7 +204,9 @@ abstract class _LoginSession extends LoginSession {
   @override
   String get specialId => throw _privateConstructorUsedError;
   @override
-  DateTime? get dateTime => throw _privateConstructorUsedError;
+  String get deviceName => throw _privateConstructorUsedError;
+  @override
+  DateTime get dateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LoginSessionCopyWith<_LoginSession> get copyWith =>
